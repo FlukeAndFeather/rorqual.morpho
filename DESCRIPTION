@@ -19,7 +19,8 @@ Authors@R: c(
     )
 Description: Predicts morphological parameters of rorquals (e.g. body mass, 
     flipper length, maximum engulfment capacity) from body length using 
-    allometric equations from Kahane-Rapport and Goldbogen (2018).
+    allometric equations from Kahane-Rapport and Goldbogen (2018) 
+    <doi:10.1002/jmor.20846>.
 License: MIT + file LICENSE
 Depends: 
     R (>= 2.10)
