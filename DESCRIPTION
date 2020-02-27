@@ -6,7 +6,7 @@ Authors@R: c(
     person(given = "Max",
            family = "Czapanskiy",
            role = c("aut", "cre"),
-           email = "maxczap@stanford.edu",
+           email = "maxczapanskiy@gmail.com",
            comment = c("ORCID-ID" = "0000-0002-6302-905X")),
     person(given = "Shirel",
            family = "Kahane-Rapport",
