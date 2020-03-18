@@ -141,6 +141,8 @@ rorq_massratio <- function(species, length_m) {
 #' @param morph name of the morphological measurement (length one character vector)
 #'
 #' @return vector of measurements
+#'
+#' @noRd
 morph_fun <- function(species, length_m, morph) {
   # Use B. acutorostrata for B. bonaerensis
   species[species == "bb"] <- "ba"
@@ -149,20 +151,20 @@ morph_fun <- function(species, length_m, morph) {
   if (length(morph) != 1) {
     stop("morph should be length_m 1")
   }
-  if (!morph %in% allometry$morphology) {
+  if (!morph %in% rorqual.morpho::allometry$morphology) {
     stop(sprintf("morph %s not found", morph))
   }
   if (length(species) != length(length_m)) {
     stop(sprintf("species and length_m have different lengths"))
   }
-  if (!all(species %in% allometry$species_code)) {
-    invalid_sp <- setdiff(species, allometry$species_code)
+  if (!all(species %in% rorqual.morpho::allometry$species_code)) {
+    invalid_sp <- setdiff(species, rorqual.morpho::allometry$species_code)
     msg <- sprintf("Species %s are invalid (see allometry$species_code)",
                    paste(invalid_sp, collapse = ", "))
     stop(msg)
   }
 
-  filter(allometry, morphology == morph) %>%
+  filter(rorqual.morpho::allometry, morphology == morph) %>%
     right_join(tibble(species, length_m),
                by = c(species_code = "species")) %>%
     mutate(result = power_law(intercept, slope, length_m)) %>%
@@ -176,6 +178,8 @@ morph_fun <- function(species, length_m, morph) {
 #' @param x untransformed values for power law calculation
 #'
 #' @return a vector of power law results
+#'
+#' @noRd
 power_law <- function(a, b, x) {
   10^a * x^b
 }
