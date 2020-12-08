@@ -164,11 +164,11 @@ morph_fun <- function(species, length_m, morph) {
     stop(msg)
   }
 
-  filter(rorqual.morpho::allometry, morphology == morph) %>%
-    right_join(tibble(species, length_m),
-               by = c(species_code = "species")) %>%
-    mutate(result = power_law(intercept, slope, length_m)) %>%
-    pull(result)
+  morph_coefs <- filter(allometry, morphology == morph)
+  idx <- match(species, morph_coefs$species_code)
+  power_law(morph_coefs$intercept[idx],
+            morph_coefs$slope[idx],
+            length_m)
 }
 
 #' Power law
