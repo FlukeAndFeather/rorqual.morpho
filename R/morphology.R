@@ -164,7 +164,7 @@ morph_fun <- function(species, length_m, morph) {
     stop(msg)
   }
 
-  morph_coefs <- filter(allometry, morphology == morph)
+  morph_coefs <- filter(rorqual.morpho::allometry, morphology == morph)
   idx <- match(species, morph_coefs$species_code)
   power_law(morph_coefs$intercept[idx],
             morph_coefs$slope[idx],

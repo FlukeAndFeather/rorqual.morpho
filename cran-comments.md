@@ -10,10 +10,4 @@
 
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 
-* This is a new release.
-* Fixed invalid URI in NEWS.md (message from previous submission below)
-
-> Found the following (possibly) invalid URLs:
->   URL: doi:10.1002/jmor.20846
->   From: NEWS.md
->   Message: Invalid URI scheme (use \doi for DOIs in Rd markup)
+R CMD check succeeded
